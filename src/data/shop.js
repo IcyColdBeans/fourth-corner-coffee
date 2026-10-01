@@ -1,6 +1,7 @@
 // Shop facts. Fourth Corner Coffee is FICTIONAL; the street address is deliberately a placeholder.
 export const SHOP = {
   name: 'Fourth Corner Coffee',
+  siteUrl: 'https://icycoldbeans.github.io/fourth-corner-coffee/', // GitHub Pages; used for canonical/OG/JSON-LD absolute URLs
   tagline: 'Est. on the square. Loud on Saturdays.',
   timeZone: 'America/Indiana/Indianapolis',
   locality: 'Noblesville',

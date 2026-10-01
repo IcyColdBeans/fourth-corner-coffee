@@ -38,8 +38,8 @@ export function buildJsonLd() {
     '@type': 'CafeOrCoffeeShop',
     name: SHOP.name,
     description: `${SHOP.tagline} A fictional neighborhood coffee shop on the downtown square in Noblesville, Indiana: house-roasted coffee, sugar cream bars, and a brass trio on Saturday mornings.`,
-    url: '/',
-    image: '/og.png',
+    url: SHOP.siteUrl,
+    image: SHOP.siteUrl + 'og.png',
     priceRange: '$',
     servesCuisine: ['Coffee', 'Pastries'],
     address: {

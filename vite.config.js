@@ -30,6 +30,8 @@ const jsonLd = () => ({
 });
 
 export default defineConfig({
+  // GitHub Pages serves from /fourth-corner-coffee/; the deploy workflow sets BASE_PATH. Local dev stays at /.
+  base: process.env.BASE_PATH || '/',
   plugins: [include(), jsonLd()],
   build: { target: 'es2020' }
 });
