@@ -1,0 +1,70 @@
+<section id="quiz" class="section quiz" aria-labelledby="quiz-title">
+  <div class="container quiz__wrap">
+    <header class="quiz__head" data-reveal>
+      <p class="eyebrow">Drink quiz</p>
+      <h2 id="quiz-title">Which drink are you?</h2>
+      <p class="lede">Five questions. No wrong answers, only strong opinions.</p>
+      <p class="quiz__last muted" data-quiz-last hidden></p>
+    </header>
+
+    <form class="quiz__form card" data-quiz-form action="#quiz" method="get">
+      <div class="quiz__progress" data-quiz-progress hidden>
+        <p class="quiz__count" data-quiz-count>Question 1 of 5</p>
+        <progress max="5" value="1" data-quiz-bar aria-hidden="true"></progress>
+      </div>
+      <fieldset class="quiz__q" data-step="0">
+        <legend class="quiz__legend">Your ideal Saturday on the square looks like:</legend>
+        <div class="quiz__opts">
+          <label class="quiz__opt"><input type="radio" name="saturday" value="0" required><span>Front row for the brass trio, hollering requests</span></label>
+          <label class="quiz__opt"><input type="radio" name="saturday" value="1"><span>The market loop, sampling every apple in the county</span></label>
+          <label class="quiz__opt"><input type="radio" name="saturday" value="2"><span>A bench, a paperback, and nowhere to be</span></label>
+          <label class="quiz__opt"><input type="radio" name="saturday" value="3"><span>Errands done by eight, then a victory lap</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="quiz__q" data-step="1">
+        <legend class="quiz__legend">How do you take your mornings?</legend>
+        <div class="quiz__opts">
+          <label class="quiz__opt"><input type="radio" name="mornings" value="0" required><span>Black, like my sense of humor</span></label>
+          <label class="quiz__opt"><input type="radio" name="mornings" value="1"><span>Softly, with the radio low</span></label>
+          <label class="quiz__opt"><input type="radio" name="mornings" value="2"><span>With a to-do list and a stopwatch</span></label>
+          <label class="quiz__opt"><input type="radio" name="mornings" value="3"><span>Late, and with a little something sweet</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="quiz__q" data-step="2">
+        <legend class="quiz__legend">The pie case is open. You point at:</legend>
+        <div class="quiz__opts">
+          <label class="quiz__opt"><input type="radio" name="dessert" value="0" required><span>Sugar cream pie, obviously. This is Indiana.</span></label>
+          <label class="quiz__opt"><input type="radio" name="dessert" value="1"><span>The lemon bar that makes you squint</span></label>
+          <label class="quiz__opt"><input type="radio" name="dessert" value="2"><span>Dark chocolate, the bitterer the better</span></label>
+          <label class="quiz__opt"><input type="radio" name="dessert" value="3"><span>Warm apple crisp with too much cinnamon</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="quiz__q" data-step="3">
+        <legend class="quiz__legend">Pick the soundtrack for your first sip:</legend>
+        <div class="quiz__opts">
+          <label class="quiz__opt"><input type="radio" name="soundtrack" value="0" required><span>A brass band warming up across the street</span></label>
+          <label class="quiz__opt"><input type="radio" name="soundtrack" value="1"><span>Porch acoustic, a little out of tune</span></label>
+          <label class="quiz__opt"><input type="radio" name="soundtrack" value="2"><span>The courthouse clock striking the hour</span></label>
+          <label class="quiz__opt"><input type="radio" name="soundtrack" value="3"><span>Silence. Blessed silence.</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="quiz__q" data-step="4">
+        <legend class="quiz__legend">On a scale of plaque-reader to daredevil, you are:</legend>
+        <div class="quiz__opts">
+          <label class="quiz__opt"><input type="radio" name="brave" value="0" required><span>Same order since the last election</span></label>
+          <label class="quiz__opt"><input type="radio" name="brave" value="1"><span>I will try the special if you vouch for it</span></label>
+          <label class="quiz__opt"><input type="radio" name="brave" value="2"><span>Surprise me. I mean it.</span></label>
+        </div>
+      </fieldset>
+      <p class="quiz__hint" data-quiz-hint aria-live="polite"></p>
+      <div class="quiz__nav">
+        <button type="button" class="btn btn--ghost" data-quiz-back hidden>Back</button>
+        <button type="button" class="btn btn--ghost" data-quiz-next hidden>Next</button>
+        <button type="submit" class="btn btn--ghost" data-quiz-submit>Tally my votes</button>
+      </div>
+    </form>
+
+    <div class="quiz__result" data-quiz-result hidden></div>
+    <p class="visually-hidden" aria-live="polite" data-quiz-live></p>
+  </div>
+</section>

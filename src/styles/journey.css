@@ -1,0 +1,75 @@
+/* Bean to cup. Mobile first: a vertical stack. .is-pinned (set by journey.js at >=768px
+   with motion allowed) turns it into a full-height pinned horizontal track. */
+.journey { overflow: clip; }
+.journey__lede { margin-bottom: var(--s-4); }
+.journey__track { list-style: none; margin: 0; padding: 0 var(--gutter); display: grid; gap: var(--s-5); }
+.journey__panel {
+  display: grid; gap: var(--s-3); align-items: center;
+  max-width: 640px; margin-inline: auto;
+}
+.journey__art { color: var(--fg); max-width: 300px; }
+.journey__art svg { width: 100%; height: auto; overflow: visible; }
+.journey__num {
+  display: block; font: 900 var(--step-4)/.9 var(--font-display); color: var(--accent);
+  margin-bottom: var(--s-1); font-variant-numeric: lining-nums;
+}
+.journey__text h3 { font-size: var(--step-2); }
+.journey__text p { color: var(--muted); }
+
+/* SVG paint helpers: tokens reach inside inline SVG through classes. */
+.j-f { fill: currentColor; }
+.j-a { fill: var(--accent); }
+.j-b { fill: var(--brass); }
+.j-m { fill: var(--bg-2); }
+.j-sky { fill: var(--mood-a); }
+.j-s { fill: none; stroke: currentColor; }
+.j-m.j-s { fill: var(--bg-2); }
+.j-sa { fill: none; stroke: var(--accent); }
+.j-sb { fill: none; stroke: var(--brass); }
+.j-bur { fill: none; stroke: var(--bg); stroke-dasharray: 3 3; }
+
+.journey__progress, .journey__cup { display: none; }
+
+@media (min-width: 768px) {
+  .journey__panel { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--s-4); max-width: var(--maxw); }
+}
+
+/* Pinned horizontal mode */
+.journey.is-pinned {
+  height: 100svh; padding-block: calc(72px + var(--s-2)) var(--s-3);
+  display: flex; flex-direction: column;
+}
+.journey.is-pinned .journey__lede { display: none; }
+.journey.is-pinned .journey__head h2 { margin-bottom: var(--s-3); }
+.journey.is-pinned .journey__viewport { flex: 1; min-height: 0; overflow: hidden; container-type: inline-size; position: relative; }
+.journey.is-pinned .journey__track {
+  display: flex; gap: 6cqw; width: max-content; height: 100%;
+  padding: 0 15cqw; will-change: transform;
+}
+.journey.is-pinned .journey__panel {
+  flex: 0 0 70cqw; max-width: none; height: 100%; padding: var(--s-4);
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.journey.is-pinned .journey__art { max-width: none; }
+.journey.is-pinned .journey__art svg { max-height: 52svh; }
+
+.journey.is-pinned .journey__progress { display: block; position: relative; padding-top: var(--s-2); }
+.journey__progress::before, .journey__progress-fill {
+  content: ""; position: absolute; inset: 0 0 auto; height: 2px; background: var(--line);
+}
+.journey__progress-fill { background: var(--brass); transform-origin: 0 50%; transform: scaleX(0); }
+.journey__ticks {
+  list-style: none; margin: 0; padding: 0; display: flex; justify-content: space-between;
+  font: 500 var(--step--1)/1 var(--font-mono); letter-spacing: .1em; color: var(--muted);
+}
+.journey__tick { transition: color var(--dur-ui); }
+.journey__tick.is-active { color: var(--fg); }
+
+.journey.is-pinned .journey__cup {
+  display: block; position: absolute; right: var(--gutter); bottom: var(--s-2);
+  width: 56px; height: 56px; color: var(--fg);
+}
+.journey__cup-level { fill: var(--accent); }
+
+.journey__hint { font-size: var(--step--1); color: var(--muted); margin-top: calc(var(--s-1) * -1); }
+.journey__hint a { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--fg); font-weight: 600; }

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fourth Corner Coffee · On the square in Noblesville, IN</title>
+  <!-- SEO:START (owned by SEO agent) -->
+  <meta name="description" content="Honey-oat lattes, 18-hour cold brew, and a brass trio on Saturdays. A fictional coffee shop on the square in Noblesville, Indiana. Find your corner." />
+  <!-- Add <link rel="canonical"> and og:url with the absolute https:// URL once deployed (relative ones are invalid); make og:image absolute too. -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#EDE6D6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#16141A" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Fourth Corner Coffee" />
+  <meta property="og:title" content="Fourth Corner Coffee · Find your corner." />
+  <meta property="og:description" content="Est. on the square. Loud on Saturdays. A fictional coffee shop in Noblesville, Indiana, with honey-oat lattes and a Saturday brass trio." />
+  <meta property="og:image" content="/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Fourth Corner Coffee logo, a square with a brass top-right corner, above the headline Find your corner." />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- SEO:END -->
+  <!-- Self-hosted fonts (src/styles/fonts.css). Preload only the headline face: it is the LCP text. -->
+  <link rel="preload" href="/fonts/playfair-var.woff2" as="font" type="font/woff2" crossorigin />
+  <script>
+    // Runs before paint so there is no theme flash. Mood follows the visitor's local clock;
+    // a saved manual choice (fc.theme = "light" | "dark") overrides light/dark only.
+    (function () {
+      var h = new Date().getHours();
+      var mood = h >= 5 && h < 11 ? 'morning' : h >= 11 && h < 17 ? 'midday' : h >= 17 && h < 21 ? 'evening' : 'night';
+      var saved = null; try { saved = localStorage.getItem('fc.theme'); } catch (e) {}
+      var d = document.documentElement;
+      d.dataset.mood = mood;
+      d.dataset.theme = saved || (mood === 'evening' || mood === 'night' ? 'dark' : 'light');
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- @include sections/header.html -->
+  <main id="main">
+    <!-- @include sections/hero.html -->
+    <!-- @include sections/today.html -->
+    <!-- @include sections/menu.html -->
+    <!-- @include sections/quiz.html -->
+    <!-- @include sections/journey.html -->
+    <!-- @include sections/letters.html -->
+    <!-- @include sections/punch.html -->
+    <!-- @include sections/hold.html -->
+    <!-- @include sections/visit.html -->
+    <!-- @include sections/finale.html -->
+  </main>
+  <!-- @include sections/footer.html -->
+  <!-- @include sections/sticky.html -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

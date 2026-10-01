@@ -1,0 +1,70 @@
+<section id="hold" class="section hold" aria-labelledby="hold-title">
+  <div class="container hold-layout">
+    <div class="hold-copy">
+      <p class="eyebrow">Reserve ahead</p>
+      <h2 id="hold-title">Hold my drink</h2>
+      <p class="lede">Tell us what and when, and we'll pretend to have it waiting on the counter.</p>
+      <p class="muted">This is a demo form. Nothing is sent anywhere: no email, no server, no barista's phone buzzing. It all stays in your browser.</p>
+    </div>
+
+    <div class="hold-stage">
+      <form class="card hold-form" data-hold-form novalidate>
+        <div class="field">
+          <input id="hold-name" name="name" type="text" autocomplete="given-name" placeholder=" " required aria-describedby="hold-name-err" />
+          <label for="hold-name">Name for the cup</label>
+          <p class="field-error" id="hold-name-err" hidden></p>
+        </div>
+
+        <div class="field field--static">
+          <select id="hold-drink" name="drink" required aria-describedby="hold-drink-err" data-hold-drink>
+            <option value="">Choose something</option>
+          </select>
+          <label for="hold-drink">Drink or bite</label>
+          <p class="field-error" id="hold-drink-err" hidden></p>
+        </div>
+
+        <div class="field">
+          <input id="hold-custom" name="custom" type="text" placeholder=" " maxlength="120" aria-describedby="hold-custom-hint" />
+          <label for="hold-custom">How you take it <span class="field-opt">(optional)</span></label>
+          <p class="field-hint muted" id="hold-custom-hint">Oat milk, extra shot, "surprise me." Theo reads everything.</p>
+        </div>
+
+        <div class="field field--static">
+          <input id="hold-time" name="time" type="time" step="300" required aria-describedby="hold-time-hint hold-time-err" />
+          <label for="hold-time">Pickup time</label>
+          <p class="field-hint muted" id="hold-time-hint" data-hold-time-hint>Shop time (Indiana), at least 15 minutes from now.</p>
+          <p class="field-error" id="hold-time-err" hidden></p>
+        </div>
+
+        <div class="field field--static">
+          <select id="hold-table" name="table">
+            <option value="">No table, just the drink</option>
+            <option value="1">1 person</option>
+            <option value="2">2 people</option>
+            <option value="3">3 people</option>
+            <option value="4">4 people</option>
+            <option value="5">5 people</option>
+            <option value="6">6 people</option>
+          </select>
+          <label for="hold-table">Save me a table for <span class="field-opt">(optional)</span></label>
+        </div>
+
+        <button class="btn btn--primary hold-submit" type="submit" data-magnetic data-hold-submit>
+          <span class="hold-spinner" aria-hidden="true"></span><span data-hold-label>Hold it</span>
+        </button>
+        <p class="field-hint muted">Demo only: nothing leaves your browser.</p>
+      </form>
+
+      <div class="ticket" data-hold-ticket hidden>
+        <div class="ticket__body">
+          <p class="ticket__kicker">Held at Fourth Corner</p>
+          <h3 class="ticket__title" tabindex="-1" data-hold-ticket-title>You're on the counter</h3>
+          <dl class="ticket__list" data-hold-summary></dl>
+          <p class="ticket__note">Show this at the counter. (It's a demo, so the barista will just be impressed.)</p>
+          <button class="btn btn--ghost" type="button" data-hold-again>Change the order</button>
+        </div>
+      </div>
+      <p class="visually-hidden" aria-live="polite" data-hold-live></p>
+    </div>
+  </div>
+</section>

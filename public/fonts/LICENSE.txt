@@ -1,0 +1,6 @@
+Fonts in this folder are Latin subsets downloaded from Google Fonts and are licensed under the
+SIL Open Font License, Version 1.1 (https://openfontlicense.org):
+
+- Playfair Display: Copyright 2017 The Playfair Display Project Authors (https://github.com/clauseggers/Playfair)
+- DM Sans: Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)
+- DM Mono: Copyright 2020 The DM Mono Project Authors (https://www.github.com/googlefonts/dm-mono)

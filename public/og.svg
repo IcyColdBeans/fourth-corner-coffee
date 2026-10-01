@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t">
+  <title id="t">Fourth Corner Coffee: Find your corner.</title>
+  <rect width="1200" height="630" fill="#EDE6D6"/>
+  <rect x="24" y="24" width="1152" height="582" fill="none" stroke="#1B1A1F" stroke-opacity=".18" stroke-width="2"/>
+  <g transform="translate(96 96)">
+    <rect x="4" y="4" width="88" height="88" fill="none" stroke="#1B1A1F" stroke-width="8"/>
+    <rect x="56" y="0" width="40" height="40" fill="#C79A3B"/>
+  </g>
+  <text x="220" y="158" font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-size="40" font-weight="700" fill="#1B1A1F">Fourth Corner Coffee</text>
+  <text x="96" y="370" font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-size="112" font-weight="800" fill="#1B1A1F">Find your corner.</text>
+  <rect x="100" y="410" width="120" height="6" fill="#C79A3B"/>
+  <text x="96" y="480" font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-style="italic" font-size="44" fill="#8E3B2E">Est. on the square. Loud on Saturdays.</text>
+  <text x="96" y="560" font-family="'DM Mono', Consolas, 'Courier New', monospace" font-size="24" fill="#5A5550">A fictional coffee shop · Noblesville, Indiana</text>
+</svg>

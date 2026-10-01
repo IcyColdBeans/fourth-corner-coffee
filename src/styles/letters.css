@@ -1,0 +1,51 @@
+/* Letters to the Editor: scroll-snap carousel on mobile, newspaper columns on desktop */
+.letters__note {
+  display: inline-block; margin-bottom: var(--s-4); padding: .35em .8em;
+  border: 1px dashed var(--line); border-radius: var(--radius-pill);
+  font: 500 var(--step--1)/1.4 var(--font-mono); color: var(--muted);
+}
+
+.letters__grid {
+  display: flex; gap: var(--s-2);
+  margin-inline: calc(-1 * var(--gutter)); padding: var(--s-1) var(--gutter) var(--s-2);
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+  overscroll-behavior-x: contain;
+  scrollbar-color: var(--muted) transparent; scrollbar-width: thin;
+}
+.letters__grid:focus-visible { outline-offset: -3px; }
+
+.letter {
+  flex: 0 0 min(82%, 22rem); scroll-snap-align: start; margin: 0;
+  padding: var(--s-3); background: var(--card); border: 1px solid var(--line); border-radius: 4px;
+  display: flex; flex-direction: column; justify-content: space-between; gap: var(--s-2);
+}
+.letter blockquote { margin: 0; }
+.letter p { margin: 0; font: 400 var(--step-0)/1.55 var(--font-display); }
+.letter p::first-letter {
+  float: left; font-size: 3.1em; line-height: .85; font-weight: 900; padding: .06em .1em 0 0;
+}
+.letter figcaption { font: 500 var(--step--1)/1.4 var(--font-mono); color: var(--muted); }
+
+.letters__hint {
+  display: flex; align-items: center; gap: .6em; margin: var(--s-1) 0 0;
+  font: 500 var(--step--1)/1 var(--font-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .12em;
+}
+.letters__hint::after { content: ""; width: 3em; height: 1px; background: currentColor; }
+
+.letters__stats {
+  list-style: none; margin: var(--s-5) 0 0; padding: var(--s-3) 0 0;
+  display: grid; gap: var(--s-2); border-top: 3px double var(--fg);
+}
+.letters__stats li { display: flex; align-items: baseline; gap: .6em; color: var(--muted); }
+.letters__stats strong { font: 900 var(--step-3)/1 var(--font-display); color: var(--fg); min-width: 1.4em; }
+
+@media (min-width: 768px) {
+  .letters__grid {
+    display: block; columns: 3 16rem; column-gap: var(--s-3); column-rule: 1px solid var(--line);
+    margin-inline: 0; padding: 0; overflow: visible;
+  }
+  .letter { break-inside: avoid; margin-bottom: var(--s-3); background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 0 0 var(--s-3); }
+  .letters__hint { display: none; }
+  .letters__stats { grid-template-columns: repeat(3, 1fr); }
+  .letters__stats li + li { border-left: 1px solid var(--line); padding-left: var(--s-3); }
+}

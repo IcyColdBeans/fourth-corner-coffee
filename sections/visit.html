@@ -1,0 +1,66 @@
+<section id="visit" class="section visit" aria-labelledby="visit-title">
+  <div class="container">
+    <p class="eyebrow">Directions &amp; parking</p>
+    <h2 id="visit-title">Find the fourth corner</h2>
+
+    <div class="visit-layout">
+      <figure class="visit-map" data-reveal>
+        <svg viewBox="0 0 400 300" role="img" aria-labelledby="visit-map-t visit-map-d">
+          <title id="visit-map-t">Map of the downtown square</title>
+          <desc id="visit-map-d">A grid of blocks around the courthouse square, with the White River curving along the west side. Corners one to three are marked with small rings; the fourth corner, top right of the courthouse block, has a glowing pin: that's us.</desc>
+          <!-- River: stylized band on the west side -->
+          <path class="map-river" d="M52 -10 C 20 60, 78 110, 44 170 S 30 260, 62 310" />
+          <text class="map-label map-label--river" transform="translate(36 205) rotate(-78)">White River</text>
+          <!-- Blocks (streets are the gaps between them) -->
+          <g class="map-blocks">
+            <rect x="100" y="20" width="70" height="65" rx="6" /><rect x="200" y="20" width="80" height="65" rx="6" /><rect x="310" y="20" width="70" height="65" rx="6" />
+            <rect x="100" y="115" width="70" height="80" rx="6" /><rect x="310" y="115" width="70" height="80" rx="6" />
+            <rect x="100" y="225" width="70" height="65" rx="6" /><rect x="200" y="225" width="80" height="65" rx="6" /><rect x="310" y="225" width="70" height="65" rx="6" />
+          </g>
+          <!-- Courthouse square with a clock -->
+          <rect class="map-square" x="200" y="115" width="80" height="80" rx="6" />
+          <rect class="map-courthouse" x="222" y="137" width="36" height="36" rx="3" />
+          <g class="map-clock">
+            <circle cx="240" cy="155" r="10" />
+            <path d="M240 155 V148 M240 155 L245 158" />
+          </g>
+          <!-- Corners 1–3 -->
+          <g class="map-corner"><circle cx="185" cy="100" r="7" /><text x="185" y="103.5">1</text></g>
+          <g class="map-corner"><circle cx="185" cy="210" r="7" /><text x="185" y="213.5">2</text></g>
+          <g class="map-corner"><circle cx="295" cy="210" r="7" /><text x="295" y="213.5">3</text></g>
+          <!-- The fourth corner -->
+          <g class="map-pin">
+            <circle class="map-pin__ring" cx="295" cy="100" r="11" />
+            <circle class="map-pin__glow" cx="295" cy="100" r="15" />
+            <circle class="map-pin__dot" cx="295" cy="100" r="8" />
+            <text class="map-pin__num" x="295" y="103.5">4</text>
+          </g>
+          <text class="map-label" x="318" y="108">us</text>
+        </svg>
+        <figcaption class="muted">Stylized map, not to scale.</figcaption>
+      </figure>
+
+      <div class="visit-info">
+        <p class="visit-address">On the square, Noblesville, IN · street address is a placeholder: Fourth Corner is a fictional shop.</p>
+        <div class="visit-links">
+          <a class="btn btn--primary" data-visit-google href="https://www.google.com/maps/search/?api=1&amp;query=Noblesville+downtown+square+Noblesville+IN" target="_blank" rel="noopener" data-magnetic>Get directions<span class="visually-hidden"> (Google Maps, opens in a new tab)</span></a>
+          <a class="btn btn--ghost" data-visit-apple href="https://maps.apple.com/?q=Noblesville+downtown+square&amp;near=Noblesville,IN" target="_blank" rel="noopener">Apple Maps<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </div>
+
+        <h3>On parking, from your correspondent</h3>
+        <ul class="visit-tips">
+          <li>There's usually street parking around the square. Read the posted signs before you settle in; time limits are a matter of public record, not opinion.</li>
+          <li>If the square is full, public lots tend to turn up a block or two off it. A short walk never hurt a latte.</li>
+          <li>Cyclists: look for bike racks near the square. Walkers can come in from the river trails and arrive with a better story than the drivers.</li>
+        </ul>
+
+        <h3>Hours</h3>
+        <table class="hours-table visit-hours">
+          <caption class="visually-hidden">Weekly hours, shop time (Indiana)</caption>
+          <tbody data-visit-hours></tbody>
+        </table>
+        <p class="visit-note">Saturday brass trio: roughly 9 to 11 AM, weather and embouchure permitting.</p>
+      </div>
+    </div>
+  </div>
+</section>

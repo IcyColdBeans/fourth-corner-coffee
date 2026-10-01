@@ -1,0 +1,41 @@
+/* Global motion: anchor offset, scroll progress, custom cursor, magnetic buttons. */
+
+/* Anchor offset for the sticky header: the single source of truth. Native jumps and Lenis scrollTo both honor it. */
+[id] { scroll-margin-top: calc(72px + var(--s-1)); }
+
+.scroll-progress {
+  position: fixed; inset: 0 0 auto; height: 3px; z-index: 1001;
+  background: var(--brass); transform-origin: 0 50%; transform: scaleX(0);
+  pointer-events: none;
+}
+
+/* GSAP owns transform on magnetic buttons; keep the other .btn transitions. */
+.has-magnetic [data-magnetic] { transition-property: background-color, color, box-shadow; }
+
+/* Native cursor stays everywhere except over the hero cup. */
+.has-cursor [data-cursor="stir"] { cursor: none; }
+
+.cursor { position: fixed; inset: 0; pointer-events: none; z-index: 1002; }
+.cursor__dot, .cursor__follow {
+  position: absolute; left: 0; top: 0; opacity: 0;
+  transition: opacity var(--dur-ui) var(--ease-out);
+}
+.cursor.is-visible .cursor__dot, .cursor.is-visible .cursor__follow { opacity: 1; }
+.cursor.is-hidden .cursor__dot, .cursor.is-hidden .cursor__follow { opacity: 0; }
+.cursor__dot {
+  width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--accent);
+}
+.cursor__ring {
+  position: absolute; width: 34px; height: 34px; left: -17px; top: -17px; border-radius: 50%;
+  border: 1.5px solid var(--fg); opacity: .45;
+  transition: transform .35s var(--ease-out), opacity .35s var(--ease-out), background-color .35s;
+}
+.cursor.is-hover .cursor__ring { transform: scale(1.6); opacity: .7; }
+.cursor.has-label .cursor__ring { transform: scale(2.3); opacity: 1; background: var(--accent); border-color: var(--accent); }
+.cursor.has-label .cursor__dot { opacity: 0; }
+.cursor__label {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
+  font: 500 .7rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--on-accent); white-space: nowrap; opacity: 0; transition: opacity var(--dur-ui);
+}
+.cursor.has-label .cursor__label { opacity: 1; }

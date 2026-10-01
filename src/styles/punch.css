@@ -1,0 +1,79 @@
+/* Loyalty punch card */
+/* My display rules would otherwise beat the [hidden] attribute. */
+#today [hidden], #punch [hidden], #hold [hidden], #visit [hidden] { display: none !important; }
+.punch-layout { display: grid; gap: var(--s-4); align-items: center; }
+@media (min-width: 900px) { .punch-layout { grid-template-columns: 1fr 1fr; } }
+
+.punch-form, .punch-joined { margin-top: var(--s-3); display: grid; gap: var(--s-2); justify-items: start; }
+.punch-field { display: grid; gap: .35rem; width: min(100%, 26rem); }
+.punch-field label { font-weight: 600; }
+.punch-field input {
+  min-height: var(--tap); padding: .7em .9em; border-radius: 10px;
+  border: 1.5px solid var(--line); background: var(--card);
+  transition: border-color var(--dur-ui), box-shadow var(--dur-ui);
+}
+.punch-field input:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent); }
+.punch-field input[aria-invalid="true"] { border-color: var(--accent); }
+.punch-fine { font-size: var(--step--1); margin: 0; }
+.punch-progress { font: 700 var(--step-1)/1.25 var(--font-display); margin: 0; }
+.punch-progress:focus { outline: none; }
+.punch-actions { display: flex; flex-wrap: wrap; gap: var(--s-1); }
+
+/* The card itself: always cream paper with ink, in either theme. */
+.punch-stage { display: grid; place-items: center; padding: var(--s-3) var(--s-1);
+  /* shadow lives on the parent: the card's perforation mask would clip its own box-shadow */
+  filter: drop-shadow(0 14px 18px color-mix(in oklab, var(--ink) 35%, transparent)); }
+.punch-card {
+  --paper: var(--steam); --ink-on-paper: var(--ink);
+  position: relative; width: min(100%, 25rem); padding: var(--s-3) var(--s-3) var(--s-3) calc(var(--s-3) + 10px);
+  background: var(--paper); color: var(--ink-on-paper); border-radius: 10px;
+  transform: rotate(-2.5deg);
+  /* Perforated left edge: a semicircle bite every 16px. */
+  -webkit-mask: radial-gradient(circle at 0 8px, transparent 4px, #000 4.5px) 0 0 / 100% 16px repeat-y;
+          mask: radial-gradient(circle at 0 8px, transparent 4px, #000 4.5px) 0 0 / 100% 16px repeat-y;
+}
+.punch-card::before { /* dashed tear line beside the perforation */
+  content: ""; position: absolute; inset: 10px auto 10px 12px; border-left: 1.5px dashed color-mix(in oklab, var(--ink) 30%, transparent);
+}
+.punch-card.is-bump { animation: punch-bump 450ms var(--ease-out); }
+@keyframes punch-bump { 30% { transform: rotate(-2.5deg) scale(1.035); } 60% { transform: rotate(-2.5deg) scale(.99); } }
+
+.punch-card__head { display: grid; margin-bottom: var(--s-2); }
+.punch-card__brand { font: 700 var(--step-1)/1.1 var(--font-display); }
+.punch-card__sub { font: 500 var(--step--1)/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; color: color-mix(in oklab, var(--ink) 72%, var(--steam)); }
+
+.punch-slots { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: .8rem; }
+.punch-slot {
+  position: relative; aspect-ratio: 1; border-radius: 50%;
+  border: 1.5px dashed color-mix(in oklab, var(--ink) 40%, transparent);
+}
+.punch-slot--free::after {
+  content: "free"; position: absolute; inset: 0; display: grid; place-items: center;
+  font: 500 .7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: .08em;
+}
+/* A punched hole: you see the page through it, ringed in brass like the punch's die. */
+.punch-slot.is-punched {
+  border: 0; background: var(--bg);
+  box-shadow: 0 0 0 3px var(--brass), inset 0 2px 4px color-mix(in oklab, var(--ink) 45%, transparent);
+}
+.punch-slot--free.is-punched::after { content: ""; }
+.punch-slot.is-new { animation: punch-pop 520ms var(--ease-out); }
+@keyframes punch-pop { 0% { transform: scale(.2); } 55% { transform: scale(1.25); } 100% { transform: scale(1); } }
+.punch-chad {
+  position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; margin: -3.5px; border-radius: 50%;
+  background: var(--paper); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 25%, transparent);
+  animation: punch-chad 750ms var(--ease-out) forwards; pointer-events: none;
+}
+@keyframes punch-chad { to { transform: translate(var(--dx), var(--dy)) rotate(200deg) scale(.6); opacity: 0; } }
+
+.punch-card__earned {
+  display: none; margin: var(--s-2) 0 0; font: 700 var(--step-1)/1 var(--font-display);
+  color: var(--brick); /* brick on cream paper: AA in both themes, since the paper never darkens */
+}
+.punch-card.is-complete .punch-card__earned { display: block; }
+.punch-card.is-complete .punch-slot.is-punched { box-shadow: 0 0 0 3px var(--brass), 0 0 14px 2px color-mix(in oklab, var(--brass) 60%, transparent), inset 0 2px 4px color-mix(in oklab, var(--ink) 45%, transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .punch-card.is-bump, .punch-slot.is-new { animation: none; }
+  .punch-chad { display: none; }
+}

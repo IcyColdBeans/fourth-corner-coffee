@@ -1,0 +1,45 @@
+/* Public Notice: dusk over the square. Always the night palette, whatever the theme. */
+.finale {
+  --bg: var(--night); --fg: var(--limestone);
+  --muted: color-mix(in oklab, var(--limestone) 74%, var(--night));
+  --accent: var(--brick-night); --on-accent: var(--night);
+  --line: color-mix(in oklab, var(--limestone) 18%, transparent);
+  background: var(--bg); color: var(--fg); color-scheme: dark;
+  padding-bottom: 0; overflow: hidden;
+}
+.finale__copy { text-align: center; position: relative; z-index: 1; }
+.finale__copy .eyebrow { justify-content: center; }
+.finale__copy .eyebrow::after { content: ""; width: 2.2em; height: 1px; background: currentColor; }
+.finale h2 { font-size: var(--step-4); }
+.finale .lede { margin-inline: auto; }
+.finale__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--s-2) var(--s-3); margin-top: var(--s-3); }
+.finale__alt { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--muted); }
+.finale__alt:hover { color: var(--fg); }
+
+.finale__scene { margin-top: var(--s-4); }
+.finale__scene svg { width: 100%; height: clamp(300px, 55vw, 560px); -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%); mask-image: linear-gradient(to bottom, transparent, #000 18%); }
+
+/* SVG paint, via tokens */
+.fin-sky-0 { stop-color: var(--night); }
+.fin-sky-1 { stop-color: var(--night-2); }
+.fin-sky-2 { stop-color: color-mix(in oklab, var(--brick-night) 45%, var(--night-2)); }
+.fin-glow-0 { stop-color: var(--brass); stop-opacity: .55; }
+.fin-glow-1 { stop-color: var(--brass); stop-opacity: 0; }
+.fin-stars { fill: var(--limestone); opacity: .55; }
+.fin-far { fill: color-mix(in oklab, var(--night-2) 78%, var(--brick-night)); }
+.fin-mid { fill: color-mix(in oklab, var(--night) 55%, var(--night-2)); }
+.fin-near { fill: var(--night); }
+.fin-win { fill: var(--brass); opacity: .28; }
+.fin-win--dim { opacity: .18; }
+.fin-lit { fill: var(--brass); }
+.fin-door { opacity: .7; }
+.fin-awning { fill: var(--brick-night); }
+.fin-clock { fill: var(--steam); opacity: .92; }
+.fin-hands { fill: none; stroke: var(--night); stroke-width: 2.5; stroke-linecap: round; }
+.fin-wire { fill: none; stroke: var(--limestone); stroke-opacity: .3; stroke-width: 1.5; }
+.fin-bulbs { fill: none; stroke: var(--brass); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 0 4; }
+.fin-bulbs--glow { stroke-width: 20; stroke-opacity: .16; }
+.fin-lamp { fill: var(--brass); opacity: .35; }
+
+.fin-shop .fin-lit { animation: fin-flicker 5s ease-in-out infinite alternate; }
+@keyframes fin-flicker { 60% { opacity: 1; } 80% { opacity: .86; } 100% { opacity: .96; } }

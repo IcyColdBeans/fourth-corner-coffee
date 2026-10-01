@@ -1,0 +1,43 @@
+<section id="punch" class="section punch" aria-labelledby="punch-title">
+  <div class="container punch-layout">
+    <div class="punch-copy">
+      <p class="eyebrow">Rewards card</p>
+      <h2 id="punch-title">Two punches on the house</h2>
+      <p class="lede" data-punch-intro>You're already 20% of the way to a free drink. We punched two for showing up.</p>
+      <p class="muted">That's a welcome gift, not a trick: every new card starts with two. Ten punches, one free drink of your choosing, no expiration date and no fine print about blackout Saturdays.</p>
+
+      <form class="punch-form" data-punch-form novalidate>
+        <div class="punch-field">
+          <label for="punch-email">Email for your card</label>
+          <input id="punch-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="punch-email-err" />
+          <p class="field-error" id="punch-email-err" hidden></p>
+        </div>
+        <button class="btn btn--primary" type="submit" data-magnetic>Punch my card</button>
+        <p class="punch-fine muted">Demo only: nothing leaves your browser. The card lives in this browser's storage and nowhere else.</p>
+      </form>
+
+      <div class="punch-joined" data-punch-joined hidden>
+        <p class="punch-progress" data-punch-progress aria-live="polite"></p>
+        <div class="punch-actions">
+          <button class="btn btn--ghost" type="button" data-punch-add>Add a visit</button>
+          <button class="btn btn--ghost" type="button" data-punch-reset hidden>Start a new card</button>
+        </div>
+        <p class="punch-fine muted">"Add a visit" is a demo button. In the shop, the barista does the punching.</p>
+      </div>
+    </div>
+
+    <div class="punch-stage">
+      <div class="punch-card" data-punch-card role="img" aria-label="2 of 10 punches">
+        <div class="punch-card__head" aria-hidden="true">
+          <span class="punch-card__brand">Fourth Corner Coffee</span>
+          <span class="punch-card__sub">Ten punches, one on us</span>
+        </div>
+        <ol class="punch-slots" aria-hidden="true" data-punch-slots>
+          <li class="punch-slot is-punched"></li><li class="punch-slot is-punched"></li><li class="punch-slot"></li><li class="punch-slot"></li><li class="punch-slot"></li>
+          <li class="punch-slot"></li><li class="punch-slot"></li><li class="punch-slot"></li><li class="punch-slot"></li><li class="punch-slot punch-slot--free"></li>
+        </ol>
+        <p class="punch-card__earned" aria-hidden="true">Free drink earned</p>
+      </div>
+    </div>
+  </div>
+</section>

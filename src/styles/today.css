@@ -1,0 +1,40 @@
+/* Today on the square */
+.today-grid { display: grid; gap: var(--s-3); margin-top: var(--s-3); }
+@media (min-width: 900px) {
+  /* F-pattern: status (the thing people scan for first) is widest, top-left. */
+  .today-grid { grid-template-columns: 1.3fr 1fr 1fr; align-items: stretch; }
+}
+.today-card { padding: var(--s-3); display: flex; flex-direction: column; gap: var(--s-1); min-width: 0; }
+.today-card p { margin: 0; }
+.today-card__label { font: 500 var(--step--1)/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 var(--s-1); }
+.today-status { font: 700 var(--step-2)/1.1 var(--font-display); }
+.today-status::before {
+  content: ""; display: inline-block; width: .5em; height: .5em; border-radius: 50%;
+  margin-right: .4em; vertical-align: .12em; background: var(--muted);
+}
+.today-status[data-state="open"]::before { background: var(--brass); }
+.today-status[data-state="closing"]::before { background: transparent; border: 2px solid var(--accent); }
+.today-level { font: 700 var(--step-1)/1.2 var(--font-display); }
+.today-fine { font-size: var(--step--1); }
+
+.today-week { margin-top: var(--s-1); }
+.today-week summary { cursor: pointer; min-height: var(--tap); display: flex; align-items: center; font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
+.hours-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+.hours-table th, .hours-table td { text-align: left; padding: .45em .25em; border-bottom: 1px solid var(--line); font-weight: 400; }
+.hours-table td { text-align: right; font-family: var(--font-mono); }
+.hours-table tr[aria-current] { font-weight: 700; background: color-mix(in oklab, var(--accent) 10%, transparent); }
+.hours-table tr[aria-current] th, .hours-table tr[aria-current] td { font-weight: 700; }
+
+.busy-chart { color: var(--fg); margin-block: var(--s-1); }
+.busy-chart svg { width: 100%; height: auto; overflow: visible; }
+.busy-chart .bar { fill: currentColor; opacity: .38; }
+.busy-chart .bar.is-past { opacity: .18; }
+.busy-chart .bar.is-now { fill: var(--accent); opacity: 1; }
+.busy-chart .now-mark { fill: var(--fg); }
+.busy-chart .now-label { fill: var(--fg); font: 500 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.busy-chart__axis { display: flex; justify-content: space-between; font: 400 var(--step--1)/1 var(--font-mono); margin-top: .25rem; }
+
+.today-pick__name { font: 700 var(--step-2)/1.1 var(--font-display); }
+.today-pick__price { font: 500 var(--step-0)/1 var(--font-mono); }
+
+.today-cta { margin-top: var(--s-4); }

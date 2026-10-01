@@ -1,0 +1,125 @@
+/* Header + footer chrome */
+/* Anchor offset for the sticky header lives in motion.css ([id] scroll-margin-top); Lenis and native jumps both read it. */
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  -webkit-backdrop-filter: saturate(1.2) blur(12px);
+  backdrop-filter: saturate(1.2) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-ui);
+}
+.site-header.is-scrolled { border-bottom-color: var(--line); }
+.site-header__inner { display: flex; align-items: center; gap: var(--s-1); min-height: 64px; }
+
+.brand {
+  display: inline-flex; align-items: center; gap: .6rem; margin-right: auto;
+  min-height: var(--tap); text-decoration: none;
+  font: 700 1.2rem/1 var(--font-display); letter-spacing: -.01em; white-space: nowrap;
+}
+.brand__mark { width: 28px; height: 28px; flex: none; }
+.brand__corner { fill: var(--brass); }
+
+/* Phones/tablets: the nav is a dropdown panel opened by .nav-toggle. Desktop: inline links. */
+.site-nav { display: none; }
+.site-header.is-open .site-nav {
+  display: grid; position: absolute; top: 100%; left: 0; right: 0;
+  padding: var(--s-1) var(--gutter) var(--s-2); background: var(--bg);
+  border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.site-header.is-open .site-nav a { min-height: 52px; padding: 0 .25rem; border-bottom: 1px solid var(--line); font-size: var(--step-1); }
+.site-header.is-open .site-nav a:last-child { border-bottom: 0; }
+.site-header.is-open .site-nav a::after { left: .25rem; right: auto; width: 2.5rem; bottom: .8rem; }
+.nav-toggle {
+  flex: none; display: inline-flex; align-items: center; gap: .45rem; min-height: var(--tap);
+  padding: 0 1rem; border: 1.5px solid var(--line); border-radius: var(--radius-pill);
+  background: transparent; cursor: pointer; font-weight: 600;
+}
+.nav-toggle:hover { border-color: currentColor; }
+.nav-toggle__close, .nav-toggle[aria-expanded="true"] .nav-toggle__open { display: none; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__close { display: inline; }
+.site-nav a {
+  position: relative; display: inline-flex; align-items: center; min-height: var(--tap);
+  padding: 0 .9rem; text-decoration: none; font-weight: 500;
+}
+.site-nav a::after {
+  content: ""; position: absolute; left: .7rem; right: .7rem; bottom: .7rem; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+.site-nav a:hover::after, .site-nav a[aria-current]::after { transform: scaleX(1); }
+
+/* Hidden on the narrowest phones so the wordmark keeps its room; the hero carries its own badge. */
+.status-pill {
+  display: none; align-items: center; gap: .5em; min-width: 0;
+  padding: .45em .9em; border: 1px solid var(--line); border-radius: var(--radius-pill);
+  font: 500 var(--step--1)/1.2 var(--font-mono); color: var(--muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.status-pill::before { content: ""; flex: none; width: .55em; height: .55em; border-radius: 50%; background: currentColor; opacity: .6; }
+.status-pill[data-state="open"]::before, .status-pill[data-state="closing"]::before { background: var(--brass); opacity: 1; }
+.status-pill[data-state="closing"]::before { background: var(--accent); }
+.status-pill[data-state="closing"]::before { animation: pill-pulse 1.6s ease-in-out infinite; }
+@keyframes pill-pulse { 50% { opacity: .3; } }
+
+.theme-toggle {
+  flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap);
+  border: 1.5px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer;
+  transition: border-color var(--dur-ui);
+}
+.theme-toggle:hover { border-color: currentColor; }
+.theme-toggle .icon-sun, :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+@media (min-width: 1024px) {
+  .site-nav { display: flex; }
+  .nav-toggle { display: none; }
+  .site-nav a { padding: 0 .7rem; }
+}
+/* The status pill only shows when there is room; the hero and Today section always show it. */
+@media (min-width: 1280px) { .status-pill { display: inline-flex; } }
+
+/* Footer: newspaper masthead */
+.site-footer {
+  padding-block: var(--s-5) calc(var(--s-4) + 72px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--line); font-size: var(--step--1);
+}
+@media (min-width: 768px) { .site-footer { padding-bottom: var(--s-4); } }
+
+.masthead { text-align: center; padding-bottom: var(--s-3); border-bottom: 3px double var(--fg); }
+.masthead__rail {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .25em 1.5em; max-width: none;
+  padding-bottom: var(--s-1); border-bottom: 1px solid var(--fg);
+  font: 500 var(--step--1)/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted);
+}
+.masthead__name {
+  margin: var(--s-2) auto var(--s-1); max-width: none;
+  font: 900 var(--step-4)/.95 var(--font-display); letter-spacing: -.02em;
+}
+.masthead__tagline { margin: 0 auto; font: italic 600 var(--step-1)/1.3 var(--font-display); }
+
+.footer-cols { display: grid; gap: var(--s-3); padding-block: var(--s-4); }
+@media (min-width: 768px) {
+  .footer-cols { grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .footer-cols > * { padding-inline: var(--s-3); }
+  .footer-cols > * + * { border-left: 1px solid var(--line); }
+}
+.footer-cols__head {
+  font: 500 var(--step--1)/1 var(--font-mono); text-transform: uppercase; letter-spacing: .14em;
+  margin-bottom: var(--s-2); padding-bottom: var(--s-1); border-bottom: 1px solid var(--line);
+}
+.footer-hours { margin: 0; }
+.footer-hours div { display: flex; justify-content: space-between; gap: var(--s-2); padding-block: .25em; }
+.footer-hours dt { font-weight: 600; }
+.footer-hours dd { margin: 0; font-family: var(--font-mono); }
+.footer-egg { font-style: italic; color: var(--muted); }
+
+.footer-bottom { max-width: none; margin: 0; padding-top: var(--s-2); border-top: 1px solid var(--line); text-align: center; }
+.footer-top { display: inline-flex; align-items: center; min-height: var(--tap); padding-inline: var(--s-2); font-weight: 600; }
+
+/* Page-load choreography, beat one: the logo square draws itself, then the brass corner drops in.
+   CSS-only; base.css collapses it to the final frame under reduced motion. */
+.brand__outline { stroke-dasharray: 1; stroke-dashoffset: 1; animation: brand-draw .9s var(--ease-out) .1s forwards; }
+.brand__corner { transform-box: fill-box; transform-origin: center; animation: brand-drop .5s var(--ease-out) .8s both; }
+@keyframes brand-draw { to { stroke-dashoffset: 0; } }
+@keyframes brand-drop { from { transform: translate(40%, -60%) scale(.4); opacity: 0; } }

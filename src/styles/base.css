@@ -1,0 +1,58 @@
+/* Shared primitives: reset, type, layout, buttons, focus. Feature CSS lives in its own file. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 400 var(--step-0)/1.6 var(--font-body);
+  transition: background-color .6s var(--ease-inout), color .6s var(--ease-inout);
+  overflow-x: clip;
+}
+img, svg, canvas { display: block; max-width: 100%; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; margin: 0 0 var(--s-2); letter-spacing: -.01em; text-wrap: balance; }
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-1); }
+p { margin: 0 0 var(--s-2); max-width: 62ch; text-wrap: pretty; }
+a { color: inherit; text-underline-offset: .2em; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+.container { width: min(100% - 2 * var(--gutter), var(--maxw)); margin-inline: auto; }
+.section { padding-block: var(--s-6); position: relative; }
+.eyebrow {
+  font: 500 var(--step--1)/1 var(--font-mono); text-transform: uppercase; letter-spacing: .14em;
+  color: var(--muted); display: inline-flex; gap: .75em; align-items: center; margin-bottom: var(--s-2);
+}
+.eyebrow::before { content: ""; width: 2.2em; height: 1px; background: currentColor; }
+.lede { font-size: var(--step-1); color: var(--muted); }
+.muted { color: var(--muted); }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Buttons. .btn--primary is the ONE isolated CTA per section (Von Restorff). */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  min-height: var(--tap); padding: .8em 1.5em; border-radius: var(--radius-pill);
+  border: 1.5px solid currentColor; background: transparent; cursor: pointer;
+  font-weight: 600; text-decoration: none; line-height: 1.1;
+  transition: transform var(--dur-ui) var(--ease-out), background-color var(--dur-ui), color var(--dur-ui), box-shadow var(--dur-ui);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn--primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: 0 10px 24px -12px var(--accent); }
+.btn--primary:hover { box-shadow: 0 16px 30px -12px var(--accent); }
+.btn--ghost { border-color: var(--line); }
+.chip {
+  min-height: 40px; padding: .4em 1em; border-radius: var(--radius-pill); border: 1.5px solid var(--line);
+  background: transparent; cursor: pointer; font: 500 var(--step--1)/1 var(--font-mono); letter-spacing: .06em;
+}
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.skip-link { position: absolute; left: var(--s-2); top: -100px; z-index: 1000; background: var(--fg); color: var(--bg); padding: .8em 1.2em; border-radius: var(--radius); }
+.skip-link:focus { top: var(--s-2); }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

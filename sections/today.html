@@ -1,0 +1,42 @@
+<section id="today" class="section today" aria-labelledby="today-title">
+  <div class="container">
+    <p class="eyebrow">Hours &amp; how busy</p>
+    <h2 id="today-title" data-today-title>Here's the day so far</h2>
+
+    <div class="today-grid" data-reveal="stagger">
+      <article class="card today-card today-card--status" aria-labelledby="today-status-h">
+        <h3 id="today-status-h" class="today-card__label">Are we open?</h3>
+        <p class="today-status" data-open-status data-today-status>Checking the clock tower…</p>
+        <p class="muted" data-today-hours></p>
+        <details class="today-week">
+          <summary>The whole week</summary>
+          <table class="hours-table">
+            <caption class="visually-hidden">Weekly hours, shop time (Indiana)</caption>
+            <tbody data-hours-body></tbody>
+          </table>
+        </details>
+      </article>
+
+      <article class="card today-card today-card--busy" aria-labelledby="today-busy-h">
+        <h3 id="today-busy-h" class="today-card__label">Is it busy?</h3>
+        <p class="today-level" data-busy-level aria-live="polite"></p>
+        <div class="busy-chart">
+          <svg data-busy-chart viewBox="0 0 240 84" role="img" aria-label="Estimated busyness today"></svg>
+          <div class="busy-chart__axis muted" aria-hidden="true"><span data-busy-open></span><span data-busy-close></span></div>
+        </div>
+        <p data-busy-quiet></p>
+        <p class="today-fine muted">Estimate based on a typical day, not a live count.</p>
+      </article>
+
+      <article class="card today-card today-card--pick" aria-labelledby="today-pick-h">
+        <h3 id="today-pick-h" class="today-card__label">Barista's Pick</h3>
+        <p class="today-pick__name" data-pick-name></p>
+        <p data-pick-note></p>
+        <p class="today-pick__price" data-pick-price></p>
+        <p class="today-fine muted" data-pick-why></p>
+      </article>
+    </div>
+
+    <p class="today-cta"><a class="btn btn--primary" href="#menu" data-magnetic>See the menu</a></p>
+  </div>
+</section>

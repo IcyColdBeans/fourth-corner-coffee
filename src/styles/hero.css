@@ -1,0 +1,137 @@
+/* Hero: kinetic headline + latte-art cup. Mobile first; Z-pattern from 900px. */
+.hero {
+  min-height: max(600px, 100svh);
+  padding-block: clamp(3rem, 8vh, 6rem) var(--s-4);
+  display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; /* start, not center: a font swap growing the text must not shift the whole block (CLS) */
+  background: radial-gradient(60% 50% at 75% 40%, color-mix(in oklab, var(--mood-a) 35%, transparent), transparent 70%);
+  overflow: clip;
+}
+.hero__grid {
+  display: grid; gap: var(--s-2); grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "cup" "top" "bottom";
+}
+.hero__top { grid-area: top; position: relative; z-index: 1; }
+.hero__bottom { grid-area: bottom; position: relative; z-index: 1; }
+
+.hero__eyebrow { margin-bottom: var(--s-2); }
+.hero__title {
+  font-size: calc(var(--step-4) * 1.12); line-height: .95; letter-spacing: -.025em;
+  margin-bottom: var(--s-2);
+}
+/* SplitText chars need inline-block to transform; keep words together. */
+.hero__title .char { display: inline-block; will-change: transform; }
+.hero__tagline { font: italic 600 var(--step-1)/1.3 var(--font-display); color: var(--accent); margin-bottom: 0; }
+.hero__lede { font-size: var(--step-0); max-width: 44ch; }
+
+.hero__status {
+  display: inline-flex; align-items: center; gap: .6em;
+  font: 500 var(--step--1)/1.3 var(--font-mono); letter-spacing: .04em; color: var(--fg);
+}
+.hero__status::before {
+  content: ""; width: .6em; height: .6em; border-radius: 50%; flex: none;
+  background: var(--muted);
+}
+.hero__status[data-state="open"]::before { background: var(--brass); box-shadow: 0 0 0 .25em color-mix(in oklab, var(--brass) 30%, transparent); animation: hero-pulse 2.4s var(--ease-inout) infinite; }
+.hero__status[data-state="closing"]::before { background: var(--accent); }
+.hero__status[data-state="closed"]::before { background: transparent; border: 1.5px solid var(--muted); }
+@keyframes hero-pulse { 50% { box-shadow: 0 0 0 .5em color-mix(in oklab, var(--brass) 0%, transparent); } }
+
+.hero__actions { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-1) var(--s-3); margin-top: var(--s-1); }
+.hero__secondary {
+  min-height: var(--tap); display: inline-flex; align-items: center;
+  color: var(--muted); font-weight: 500;
+}
+.hero__secondary:hover { color: var(--fg); }
+
+/* Cup, seen from above. Fixed aspect-ratio boxes: no CLS when the canvas mounts. */
+.hero__cup {
+  grid-area: cup; position: relative; justify-self: center;
+  width: min(66vw, 300px); aspect-ratio: 1;
+  margin-bottom: calc(var(--s-3) * -1);
+  touch-action: pan-y; /* horizontal drags stir, vertical drags still scroll */
+}
+.hero__saucer {
+  position: absolute; inset: 0; border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 57%, color-mix(in oklab, var(--fg) 10%, transparent) 58.5%, transparent 61%),
+    radial-gradient(circle at 38% 32%, var(--card), color-mix(in oklab, var(--bg-2) 80%, var(--fg) 8%));
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
+}
+.hero__well, .hero__rim {
+  position: absolute; inset: 21%; border-radius: 50%;
+}
+.hero__well { overflow: hidden; isolation: isolate; }
+.hero__well > canvas, .hero__fallback {
+  position: absolute; inset: 0; width: 100% !important; height: 100% !important;
+}
+.hero__well > canvas { opacity: 0; transition: opacity .6s var(--ease-out); }
+.hero__cup.is-gl .hero__well > canvas { opacity: 1; }
+.hero__cup.is-gl .hero__fallback { visibility: hidden; transition: visibility 0s .6s; }
+/* Cup lip: a thick ceramic ring over the crema edge. */
+.hero__rim {
+  inset: 17%; pointer-events: none;
+  box-shadow:
+    inset 0 0 0 clamp(8px, 2.6vw, 16px) var(--steam),
+    inset 0 0 0 calc(clamp(8px, 2.6vw, 16px) + 1px) color-mix(in oklab, var(--fg) 12%, transparent),
+    inset 0 10px 22px -8px color-mix(in oklab, var(--ink) 55%, transparent),
+    0 14px 30px -14px color-mix(in oklab, var(--ink) 60%, transparent);
+}
+
+/* Steam: transforms + opacity only. */
+.hero__steam { position: absolute; inset: -12% 20% 50%; pointer-events: none; z-index: 2; }
+.hero__steam span {
+  position: absolute; bottom: 0; left: 50%; width: 22%; height: 70%;
+  border-radius: 50%; opacity: 0;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--fg) 16%, transparent), transparent);
+  filter: blur(6px);
+  animation: hero-steam 5.5s var(--ease-inout) infinite;
+}
+.hero__steam span:nth-child(1) { margin-left: -30%; animation-delay: -1.2s; }
+.hero__steam span:nth-child(2) { margin-left: -8%; animation-delay: -3.4s; animation-duration: 6.5s; }
+.hero__steam span:nth-child(3) { margin-left: 12%; animation-delay: -.2s; }
+@keyframes hero-steam {
+  0% { transform: translate3d(0, 30%, 0) scale(.7, .6); opacity: 0; }
+  30% { opacity: .75; }
+  100% { transform: translate3d(12%, -60%, 0) scale(1.2, 1.3) rotate(8deg); opacity: 0; }
+}
+:root[data-theme="dark"] .hero__steam span { background: radial-gradient(closest-side, color-mix(in oklab, var(--steam) 30%, transparent), transparent); }
+
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    grid-template-rows: 1fr 1fr; row-gap: var(--s-3);
+    grid-template-areas: "top cup" "bottom cup";
+    min-height: min(72svh, 720px);
+    column-gap: var(--s-4);
+  }
+  .hero__top { align-self: end; }
+  .hero__bottom { align-self: start; }
+  .hero { align-items: center; }
+  .hero__cup { width: min(100%, 520px, 70svh); align-self: center; margin: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__steam span { animation: none; opacity: .45; transform: translate3d(0, -10%, 0); }
+  .hero__status[data-state="open"]::before { animation: none; }
+  .hero__title .char { will-change: auto; }
+}
+
+/* Stacked on phones so the bandit's CTA label length can't change the row count (CLS). */
+@media (min-width: 900px) { .hero__actions { flex-direction: row; flex-wrap: wrap; align-items: center; } }
+
+/* Page-load choreography, pure CSS so it starts on first paint without waiting for JS (LCP).
+   The headline is pre-split in hero.html. Fill mode is `backwards`, so once each animation ends
+   it lets go of transform and GSAP can take the chars over for the pointer lean. */
+.hero__title .w { display: inline-block; white-space: nowrap; }
+.hero__title .ch { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero__eyebrow { animation: hero-wipe .45s cubic-bezier(.65,0,.35,1) backwards; }
+  .hero__title .ch { animation: hero-rise .7s var(--ease-out) calc(.1s + var(--i) * 16ms) backwards; }
+  .hero__cup { animation: hero-cup .9s var(--ease-out) .2s backwards; }
+  .hero__tagline, .hero__lede, .hero__status, .hero__actions { animation: hero-up .6s var(--ease-out) .5s backwards; }
+  .hero__lede { animation-delay: .53s; } .hero__status { animation-delay: .56s; } .hero__actions { animation-delay: .59s; }
+}
+@keyframes hero-wipe { from { clip-path: inset(0 100% 0 0); } }
+@keyframes hero-rise { from { transform: translateY(110%) rotate(8deg); opacity: 0; } }
+@keyframes hero-cup { from { transform: scale(.86) rotate(-10deg); opacity: 0; } }
+@keyframes hero-up { from { transform: translateY(18px); opacity: 0; } }

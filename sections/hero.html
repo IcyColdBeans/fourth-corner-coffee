@@ -1,0 +1,45 @@
+<section id="hero" class="section hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__top">
+      <p class="eyebrow hero__eyebrow"><span><span data-edition>Morning</span> Edition · Noblesville, Indiana</span></p>
+      <h1 id="hero-title" class="hero__title" aria-label="Find your corner."><span aria-hidden="true"><span class="w"><span class="ch" style="--i:0">F</span><span class="ch" style="--i:1">i</span><span class="ch" style="--i:2">n</span><span class="ch" style="--i:3">d</span></span> <span class="w"><span class="ch" style="--i:4">y</span><span class="ch" style="--i:5">o</span><span class="ch" style="--i:6">u</span><span class="ch" style="--i:7">r</span></span><br><span class="w"><span class="ch" style="--i:8">c</span><span class="ch" style="--i:9">o</span><span class="ch" style="--i:10">r</span><span class="ch" style="--i:11">n</span><span class="ch" style="--i:12">e</span><span class="ch" style="--i:13">r</span><span class="ch" style="--i:14">.</span></span></span></h1>
+      <p class="hero__tagline">Est. on the square. Loud on Saturdays.</p>
+    </div>
+
+    <div class="hero__cup" data-cup data-cursor="stir">
+      <div class="hero__steam" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="hero__saucer" aria-hidden="true"></div>
+      <div class="hero__well" data-cup-well>
+        <!-- Static latte art: shown before WebGL mounts, without JS, and as the no-WebGL fallback. -->
+        <svg class="hero__fallback" viewBox="-100 -100 200 200" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="hero-crema" r="0.5">
+              <stop offset="0" stop-color="#4a2a17" />
+              <stop offset=".72" stop-color="#6b3d1f" />
+              <stop offset=".9" stop-color="#a8703d" />
+              <stop offset="1" stop-color="#3a2012" />
+            </radialGradient>
+          </defs>
+          <circle r="100" fill="url(#hero-crema)" />
+          <g fill="#f3e6cf">
+            <path d="M0 58 C -34 30 -46 -4 -30 -26 C -18 -42 -4 -38 0 -24 C 4 -38 18 -42 30 -26 C 46 -4 34 30 0 58 Z" opacity=".95" />
+            <path d="M0 -24 L0 70" stroke="#6b3d1f" stroke-width="3" />
+          </g>
+          <g fill="none" stroke="#6b3d1f" stroke-width="3.5" stroke-linecap="round" opacity=".55">
+            <path d="M-24 -6 Q0 8 24 -6" /><path d="M-26 12 Q0 26 26 12" /><path d="M-18 30 Q0 42 18 30" />
+          </g>
+        </svg>
+      </div>
+      <div class="hero__rim" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero__bottom">
+      <p class="lede hero__lede">Your correspondent has checked: the espresso is pulled, the benches are dry, and the fourth corner of the square is holding a seat for you.</p>
+      <p class="hero__status" data-open-status>Checking the clock…</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#visit" data-bandit-cta data-magnetic data-cursor="go">Get directions</a>
+        <a class="hero__secondary" href="#menu">or see the menu</a>
+      </div>
+    </div>
+  </div>
+</section>
