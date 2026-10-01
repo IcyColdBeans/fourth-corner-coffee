@@ -16,6 +16,8 @@ npm run preview   # serve dist/ at http://localhost:4173
 
 Requirements: Node 20+. No backend, no environment variables, no API keys.
 
+**Live:** https://icycoldbeans.github.io/fourth-corner-coffee/. Every push to `main` runs the tests, builds with `BASE_PATH=/fourth-corner-coffee/`, and publishes via `.github/workflows/deploy.yml`. If the repo is renamed or moved, update `SHOP.siteUrl` in `src/data/shop.js` and the canonical/OG URLs in `index.html`.
+
 ## Brand in one paragraph
 
 **Fourth Corner Coffee: "Est. on the square. Loud on Saturdays."** Mags Pruitt, a retired high-school band director, spent 31 years telling kids to "find your corner and hold it." She opened the shop with her nephew Theo, who roasts in small batches in the back, and named it for the corner the square was missing: the one where you stop. A brass trio plays Saturday mornings. The voice is a small-town newspaper columnist: warm, dry, civic, with one pun per section at most. Palette: brick, limestone, ink, and brass. Type: Playfair Display, DM Sans, and DM Mono. Full brand bible: [`docs/brand.md`](docs/brand.md).
@@ -87,7 +89,6 @@ docs/                 spec, brand bible, contracts, QA checklist
 ## Known limits / deliberately left out
 
 - **Bandit learning is per-browser.** With no backend, each visitor's `localStorage` only learns from that visitor. Real aggregation needs a tiny endpoint; the sampler would not change.
-- **Canonical and `og:url`** need an absolute URL, so add them once there's a domain (see the comment in `index.html`).
 - **Forms don't send anything.** Reservations and the loyalty sign-up are demos by design.
 - **Parking tips are general on purpose.** No specific lots, prices, or rules were invented.
 - **Quiz without JS:** the form renders and submits, but scoring needs JS.
